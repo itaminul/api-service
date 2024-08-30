@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  web:
+    image: apiproject
+    build: 
+      context: .
+      dockerfile: Dockerfile.web
+    restart: always
+    ports:
+      - '8080:8080'
+    depends_on:    # Corrected typo here
+      - nodejs-api
+
+  nodejs-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.nodejs
+    ports:
+      - "8002:8002"  
+    volumes:
+      - ./app:/usr/src/app  
+

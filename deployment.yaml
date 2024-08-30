@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiproject
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apiproject
+  template:
+    metadata:
+      labels:
+        app: apiproject
+    spec:
+      containers:
+        - name: apiproject
+          image: itaminul/apiproject:v1.0.5
+          ports:
+            - containerPort: 8002
