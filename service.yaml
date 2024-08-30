@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: sso-be-service
+spec:
+  selector:
+    app: sso-be-app  # Ensure this matches the label of the corresponding pods
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000  # This should be the port your pod listens on
+  type: ClusterIP  # You can use LoadBalancer if needed, but ClusterIP is typically fine behind an Ingress
